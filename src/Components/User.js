@@ -58,7 +58,7 @@ const User = ({user, onDelete}) => {
                     <div className="card-text">
                         <p className="d-flex "><AiOutlineMail /><span>{user.email}</span></p>
                         <p className="d-flex "><AiOutlinePhone /><span>{user.phone}</span></p>
-                        <p className="d-flex "><AiOutlineGlobal/><span>{user.website}</span></p>
+                        <p className="d-flex "><AiOutlineGlobal /><span>{user.website}</span></p>
                     </div>
                 </div>
                 <div className="card-footer d-flex justify-content-around">
@@ -102,8 +102,6 @@ const EditModal = ({user, closeModal, updateUser}) =>{
     const [phone,setPhone] = useState(user.phone)
     const [website,setWebsite] = useState(user.website)
     const [showErr,setShowErr] = useState(false)
-
-    console.log('modal called');
 
     const handleUpdateUser = () =>{
         if(name && email && phone && website)
