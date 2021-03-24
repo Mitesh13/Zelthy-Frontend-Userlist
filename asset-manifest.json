@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Zelthy-Frontend-Userlist/static/css/main.6d1be0ff.chunk.css",
+    "main.js": "/Zelthy-Frontend-Userlist/static/js/main.2e70b07a.chunk.js",
+    "main.js.map": "/Zelthy-Frontend-Userlist/static/js/main.2e70b07a.chunk.js.map",
+    "runtime-main.js": "/Zelthy-Frontend-Userlist/static/js/runtime-main.0671881e.js",
+    "runtime-main.js.map": "/Zelthy-Frontend-Userlist/static/js/runtime-main.0671881e.js.map",
+    "static/css/2.ef9168ec.chunk.css": "/Zelthy-Frontend-Userlist/static/css/2.ef9168ec.chunk.css",
+    "static/js/2.845a6ff8.chunk.js": "/Zelthy-Frontend-Userlist/static/js/2.845a6ff8.chunk.js",
+    "static/js/2.845a6ff8.chunk.js.map": "/Zelthy-Frontend-Userlist/static/js/2.845a6ff8.chunk.js.map",
+    "static/js/3.66247623.chunk.js": "/Zelthy-Frontend-Userlist/static/js/3.66247623.chunk.js",
+    "static/js/3.66247623.chunk.js.map": "/Zelthy-Frontend-Userlist/static/js/3.66247623.chunk.js.map",
+    "index.html": "/Zelthy-Frontend-Userlist/index.html",
+    "static/css/2.ef9168ec.chunk.css.map": "/Zelthy-Frontend-Userlist/static/css/2.ef9168ec.chunk.css.map",
+    "static/css/main.6d1be0ff.chunk.css.map": "/Zelthy-Frontend-Userlist/static/css/main.6d1be0ff.chunk.css.map",
+    "static/js/2.845a6ff8.chunk.js.LICENSE.txt": "/Zelthy-Frontend-Userlist/static/js/2.845a6ff8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0671881e.js",
+    "static/css/2.ef9168ec.chunk.css",
+    "static/js/2.845a6ff8.chunk.js",
+    "static/css/main.6d1be0ff.chunk.css",
+    "static/js/main.2e70b07a.chunk.js"
+  ]
+}
