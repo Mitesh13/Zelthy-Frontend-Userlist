@@ -15,7 +15,7 @@ function App() {
       let data = await res.json()
       
       setUsers(()=>{
-        setIsLoading((loading)=>!loading)
+        setIsLoading(()=>false)
         return data
       })
     }

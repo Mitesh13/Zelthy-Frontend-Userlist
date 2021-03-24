@@ -18,7 +18,7 @@ const User = ({user, onDelete}) => {
     const avatarURL = `https://avatars.dicebear.com/v2/avataaars/${user.name}.svg?background=%23f7f7f7`
 
     useEffect(()=>{
-        console.log('called');
+        
         const getAvatar = async () =>{
             let res = await fetch(avatarURL)
             let data = await res.blob()
@@ -41,8 +41,8 @@ const User = ({user, onDelete}) => {
         setLiked((lkd)=>!lkd)
     }
     return (
-        <div className="col-xl-3 col-lg-4 col-md-6 col-12 my-3 d-flex flex-column">
         
+        <div className="col-xl-3 col-lg-4 col-md-6 col-12 my-3 d-flex flex-column">
             <div className="card px-0 flex-fill">
                 {
                     isLoading ?
@@ -76,8 +76,10 @@ const User = ({user, onDelete}) => {
                 </div>
                        
             </div>
-               
-            <EditModal user={user} updateUser={updateUser} showModal={showModal} closeModal={()=>setShowModal(()=>false)}/>
+            {
+                showModal &&
+                <EditModal user={user} updateUser={updateUser} closeModal={()=>setShowModal(()=>false)}/>
+            }
             
         </div>
     )
@@ -93,22 +95,29 @@ const Loading = () => {
     )
 }
 
-const EditModal = ({user, showModal, closeModal, updateUser}) =>{
+const EditModal = ({user, closeModal, updateUser}) =>{
     
     const [name,setName] = useState(user.name)
     const [email,setEmail] = useState(user.email)
     const [phone,setPhone] = useState(user.phone)
     const [website,setWebsite] = useState(user.website)
+    const [showErr,setShowErr] = useState(false)
 
+    console.log('modal called');
 
     const handleUpdateUser = () =>{
         if(name && email && phone && website)
+        {
             updateUser(name, email, phone, website)
-        closeModal()
+            closeModal()
+            setShowErr(()=>false)
+            return            
+        }
+        setShowErr(()=>true)
     }
 
     return (
-        <Modal show={showModal} centered onHide={closeModal} animation={false}>
+        <Modal show={true} centered onHide={closeModal} animation={false}>
             <Modal.Header closeButton>
                 <Modal.Title>Basic Modal</Modal.Title>
             </Modal.Header>
@@ -131,13 +140,17 @@ const EditModal = ({user, showModal, closeModal, updateUser}) =>{
                         <p className="col-md-4 text-md-right pl-0"><span style={{color:'red'}}>*</span> Website:</p>
                         <input className="col-md-8 form-control" type="text" name="name" value={website} onChange={(e)=>setWebsite(()=>e.target.value)} required/>
                     </div>
-                    
+                    {
+                        showErr &&
+                        <p style={{color: 'red', textAlign: 'right'}}>Please fill all the values</p>
+                    }    
                 </form>
+                
             </Modal.Body>
 
             <Modal.Footer>
                 <Button onClick={closeModal} className="px-4" variant="outline-dark">Cancel</Button>
-                <Button onClick={()=>handleUpdateUser()} className="px-4" variant="primary">OK</Button>
+                <Button onClick={handleUpdateUser} className="px-4" variant="primary">OK</Button>
             </Modal.Footer>
         </Modal>
         
