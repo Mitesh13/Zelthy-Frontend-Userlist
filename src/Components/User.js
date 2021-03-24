@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import {Modal,Button} from 'react-bootstrap'
+import Loading from './Loading'
 import { 
         AiTwotoneHeart,
         AiOutlineHeart,
@@ -18,8 +19,9 @@ const User = ({user, onDelete}) => {
     const avatarURL = `https://avatars.dicebear.com/v2/avataaars/${user.name}.svg?background=%23f7f7f7`
 
     useEffect(()=>{
-        
+        // Fetches an avatar based on username
         const getAvatar = async () =>{
+            setIsLoading(()=>true)
             let res = await fetch(avatarURL)
             let data = await res.blob()
             data = URL.createObjectURL(data);
@@ -41,8 +43,8 @@ const User = ({user, onDelete}) => {
         setLiked((lkd)=>!lkd)
     }
     return (
-        
         <div className="col-xl-3 col-lg-4 col-md-6 col-12 my-3 d-flex flex-column">
+        
             <div className="card px-0 flex-fill">
                 {
                     isLoading ?
@@ -77,21 +79,11 @@ const User = ({user, onDelete}) => {
                        
             </div>
             {
-                showModal &&
+                showModal && 
                 <EditModal user={user} updateUser={updateUser} closeModal={()=>setShowModal(()=>false)}/>
             }
             
         </div>
-    )
-}
-
-const Loading = () => {
-    return (
-      <div className="spinner">
-        <div className="cube1"></div>
-        <div className="cube2"></div>
-      </div> 
-            
     )
 }
 
@@ -102,6 +94,7 @@ const EditModal = ({user, closeModal, updateUser}) =>{
     const [phone,setPhone] = useState(user.phone)
     const [website,setWebsite] = useState(user.website)
     const [showErr,setShowErr] = useState(false)
+
 
     const handleUpdateUser = () =>{
         if(name && email && phone && website)
